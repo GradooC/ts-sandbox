@@ -56,21 +56,19 @@ const tree: Tree = {
 //     return res;
 // };
 
-// const getTreeValues = (tree: Tree) => {
-//     const pusher = (children: Tree[] = [], acc: number[]) => {
-//         return children.reduce((acc, { value, children }) => {
-//             return Boolean(children)
-//                 ? [...acc, ...pusher(children, [value])]
-//                 : [...acc, value];
-//         }, acc);
-//     };
+export const getTreeValues = (tree: Tree) => {
+    const pusher = (children: Tree[] = [], acc: number[]) => {
+        return children.reduce((acc, { value, children }) => {
+            return Boolean(children)
+                ? [...acc, ...pusher(children, [value])]
+                : [...acc, value];
+        }, acc);
+    };
 
-//     return pusher(tree.children, [tree.value]);
-// };
+    return pusher(tree.children, [tree.value]);
+};
 
-const getTreeValues = (tree: Tree) =>
-    [tree].reduce((acc, { value, children }) => {
-        return Boolean(children) ? 
-    }, []);
-
-console.log(getTreeValues(tree));
+console.time('Executing');
+const res = getTreeValues(tree);
+console.timeEnd('Executing');
+console.log(res);
