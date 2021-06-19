@@ -1,17 +1,32 @@
-function abc() {
-    this.name = 'abc'
-    const a = () => {
-        console.log(this)
-    }
-    a()
-}
-
-const obj = {
-    nameObj: 'obj',
-    fn: abc
-}
-
-obj.fn()
-abc()
-
-console.log(42 == '42')
+// let user = {
+//     name: "Джон",
+//     age: 30,
+//     sayHi() {
+//       // this - это "текущий объект"
+//       console.log(this.name);
+//     }
+//   };
+//   user.sayHi(); // Джон
+// const user = { name: 'Джон', f: null };
+// const admin = { name: 'Сэм', f: null };
+// const sayMyName = () => {
+//     console.log(this.name);
+// };
+// const obj = {
+//     sayMyName: () => {
+//         console.log(this.name);
+//     }
+// }
+// user.f = sayMyName;
+// admin.f = sayMyName;
+// user.f()
+// admin.f()
+// function abc() {
+//     const name = 'abc'
+//     this.name = 'abfff'
+//     const test = () => {
+//         console.log(this.name)
+//     }
+//     test();
+// }
+// abc()
