@@ -1,3 +1,5 @@
+import { delay } from './utils/delay';
+
 const assertEquals = (a: any, b: any) => {
     if (a === b) {
         console.log(`${a} === ${b}`);
@@ -6,11 +8,6 @@ const assertEquals = (a: any, b: any) => {
     console.log(`${a} !== ${b}`);
     return false;
 };
-
-export const delay = (ms: number) =>
-    new Promise((resolve) => {
-        setTimeout(resolve, ms);
-    });
 
 (async () => {
     const debounce = <

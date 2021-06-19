@@ -1,8 +1,8 @@
-import { delay } from './debounce';
+import { delay } from './utils/delay';
 
 (async () => {
     const throttle = (fn: Function, ms: number = 100) => {
-        let timerId: ReturnType<typeof setTimeout>;
+        let timerId: number;
 
         return (...args: any[]) => {
             if (timerId) return;
@@ -15,7 +15,7 @@ import { delay } from './debounce';
     };
 
     const test = () => {
-        console.log('!');
+        console.log('5');
     };
 
     const throttledTest = throttle(test);
