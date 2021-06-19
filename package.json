@@ -2,7 +2,6 @@
   "name": "sandbox",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "start": "npx ts-node $FILE"
   },
@@ -10,7 +9,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "ts-node": "^9.1.1",
-    "typescript": "^4.2.4"
+    "ts-node": "10.0.0",
+    "typescript": "4.3.4"
   }
 }
