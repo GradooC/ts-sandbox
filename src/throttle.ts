@@ -1,34 +1,42 @@
 import { delay } from './utils/delay';
 
 (async () => {
-    const throttle = (fn: Function, ms: number = 100) => {
-        let timerId: number;
+    const throttle = (fn: Function, ms: number = 500) => {
+        let isThrottled = false;
+        let savedArgs: any[];
 
-        return (...args: any[]) => {
-            if (timerId) return;
+        const wrapper = (...args: any[]) => {
+            if (isThrottled) {
+                savedArgs = args;
+                return;
+            }
 
-            timerId = setTimeout(() => {
-                fn(...args);
-                timerId = null;
+            fn(...args);
+            isThrottled = true;
+
+            setTimeout(() => {
+                isThrottled = false;
+                if (savedArgs) {
+                    fn(...savedArgs);
+                    savedArgs = null;
+                }
             }, ms);
         };
+
+        return wrapper;
     };
 
-    const test = () => {
-        console.log('5');
-    };
+    const throttledTest = throttle(console.log);
 
-    const throttledTest = throttle(test);
-
-    throttledTest();
+    throttledTest(1);
     await delay(50);
-    throttledTest();
+    throttledTest(2);
     await delay(50);
-    throttledTest();
+    throttledTest(3);
+    await delay(600);
+    throttledTest(4);
     await delay(50);
-    throttledTest();
+    throttledTest(5);
     await delay(50);
-    throttledTest();
-    await delay(50);
-    throttledTest();
+    throttledTest(6);
 })();
