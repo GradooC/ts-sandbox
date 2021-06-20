@@ -1,7 +1,8 @@
 {
     "compilerOptions": {
         "lib": ["DOM", "ES2020"],
-        "downlevelIteration": true,
+        // "downlevelIteration": true,
+        "module": "commonJS" // It allows to use import/export syntax in the .spec. files
     },
     "include": ["src/**/*"]
 }
