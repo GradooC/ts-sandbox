@@ -7,6 +7,14 @@
             "args": ["ts-node", "${relativeFile}"],
             "label": "Start",
             "detail": "Run current file"
+        },
+        {
+            "type": "shell",
+            "group": "test",
+            "command": "npx",
+            "args": ["jest", "${fileBasenameNoExtension}"],
+            "label": "Test",
+            "detail": "Run tests related to the current file"
         }
     ]
 }
