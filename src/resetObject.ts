@@ -8,7 +8,8 @@ type FlatReset<O extends Record<string, any>> = {
     [K in keyof O]: null;
 };
 
-const isObject = (value: any) => Object.prototype.toString.call(value) === '[object Object]';
+const isObject = (value: any): value is Record<string, any> =>
+    Object.prototype.toString.call(value) === '[object Object]';
 
 export function resetObject<O extends Record<string, any>>(obj: O, deep?: 'flat'): FlatReset<O>;
 export function resetObject<O extends Record<string, any>>(obj: O, deep: 'deep'): DeepReset<O>;
